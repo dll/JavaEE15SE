@@ -13,7 +13,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 import cn.edu.chzu.xxxy.se15.javaee.struts.bean.ItemBean;
-import cn.edu.chzu.xxxy.se15.javaee.struts.bean.ShoppingCartBean;
 import cn.edu.chzu.xxxy.se15.javaee.struts.bean.UserBean;
 import cn.edu.chzu.xxxy.se15.javaee.struts.service.ItemService;
 import cn.edu.chzu.xxxy.se15.javaee.struts.service.UserService;
@@ -50,12 +49,6 @@ public class ItemAction extends ActionSupport implements ModelDriven<ItemBean> {
 		request=(Map<String, Object>) ctx.get("request");
 		session=(Map<String, Object>) ctx.getSession();
 		application=(Map<String, Object>) ctx.getApplication();
-		//访问application范围的属性值:计数
-		Integer counter = (Integer)application.get("counter");
-		if(counter==null) counter=1;
-		else counter=counter+1;
-		//设置application范围的属性
-		application.put("counter", counter);
 
 		this.addActionMessage(this.getText("visitor.success"));
 

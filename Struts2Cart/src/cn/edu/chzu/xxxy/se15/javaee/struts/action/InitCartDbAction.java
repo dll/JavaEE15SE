@@ -29,6 +29,9 @@ public class InitCartDbAction extends ActionSupport {
 	@Override
 	public String execute()throws Exception {
 
+		/**
+		 * 根据管理员的选择是否初始化数据库
+		 * */
 		if("initcartdb".equals(getInitdb()))
 		{
 			createDB();
@@ -49,7 +52,7 @@ public class InitCartDbAction extends ActionSupport {
 	}
 	public void createDB(){
 		try{
-			conn= JdbcUtil.is_getCon();
+			conn= JdbcUtil.is_getCon();//连接MySQL的系统数据库：information_schema，其中有所有数据库、表、字段等所有信息
 			String sql="DROP DATABASE IF EXISTS struts2cartdb";
 	    	st = (PreparedStatement) conn.prepareStatement(sql);
 	    	st.executeUpdate();
@@ -66,7 +69,7 @@ public class InitCartDbAction extends ActionSupport {
 	public void createTables(){
 		Savepoint sp=null;
 	  	try {
-			conn=JdbcUtil.sc_getCon();
+			conn=JdbcUtil.sc_getCon();//连接本站数据库：struts2cartdb
 	    	conn.setAutoCommit(false);
 	    	sp = conn.setSavepoint("sp1");	    	 
 	    	createDAOTable("users", users);
@@ -104,7 +107,7 @@ public class InitCartDbAction extends ActionSupport {
     	st.executeUpdate(); 
     	System.out.println(tablename+" 表创建成功!");
 	}
-
+	//MySQL数据库事务、保存点演示
 	public void initCardData(){
 		Savepoint sp=null;
 	  	try {

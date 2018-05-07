@@ -8,6 +8,9 @@ import cn.edu.chzu.xxxy.se15.javaee.struts.bean.UserBean;
 import cn.edu.chzu.xxxy.se15.javaee.struts.dao.DaoFactory;
 import cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException;
 
+/**
+ * UserService层完成JSP-》Action和DAO-》Bean-》DB之间的业务逻辑
+ * */
 public class UserService {
 	
 	public boolean login(UserBean loginUser) throws Exception{
@@ -20,6 +23,8 @@ public class UserService {
 		if (loginUser.getPassword().toUpperCase().contains(" AND ")||loginUser.getPassword().toUpperCase().contains(" OR ")){
 			throw new java.sql.SQLException("密码不能包括' and '或' or '");
 		}
+		//原来由硬编码测试javaee、123456
+		//现在从数据库中读数并判断
 		/*if(account.equals(loginUser.getAccount())
 				&& password.equals(loginUser.getPassword()))*/
 		boolean result = DaoFactory.getUserDaoInstance().login(loginUser.getAccount(),loginUser.getPassword());
@@ -46,19 +51,21 @@ public class UserService {
 		else
 			return false;
 	}
+	
 	private static List<UserBean> users = new ArrayList<UserBean>();
 
 	public List<UserBean> getAllUsers() {
 		try {
 			users=DaoFactory.getUserDaoInstance().findAll();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(users.size()==0){
+		//如果数据库中无用户数据，就new两个用户
+		//好像无意义，只是显示测试：所有用户信息时，故可以注释
+/*		if(users.size()==0){
 			users.add(new UserBean("admin","123",1));
 			users.add(new UserBean("javaee", "123456", 1));
-		}
+		}*/
 		return users;
 	}
 

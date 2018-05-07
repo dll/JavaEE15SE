@@ -52,7 +52,7 @@ public class LoginAction extends ActionSupport{
 			if(userServ.login(loginUser)){
 				//this.addActionMessage("登录成功！");
 				this.addActionMessage(this.getText("login.success"));
-				session.put("user", loginUser.getAccount());
+				session.put("user", loginUser.getAccount());//与account只要保留一个
 				session.put("account", loginUser.getAccount());
 				session.put("password", loginUser.getPassword());
 				session.put("usertype", loginUser.getUsertype());
@@ -92,11 +92,14 @@ public class LoginAction extends ActionSupport{
 			this.addFieldError("loginUser.usertype", this.getText("login.usertype.3"));
 		}
 	}
+	/**
+	 * 注销用户
+	 * */
 	public String logout(){
 		ActionContext ctx= ActionContext.getContext();
 		//通过ActionContext对象获取请求、会话和上下文对象相关联的Map对象
 		session=(Map<String, Object>) ctx.getSession();
-		if(session!=null && session.get("user")!=null){
+		if(session!=null ){
 			session.remove("user");
 			session.remove("account");
 			return "success";
@@ -127,6 +130,9 @@ public class LoginAction extends ActionSupport{
     public String getFileName() {  
         return fileName;  
     }  
+    /**
+     * 响应下载的动作调用的方法
+     * */
     public String downloadFile() throws Exception {  
         ServletContext context = ServletActionContext.getServletContext();  
           

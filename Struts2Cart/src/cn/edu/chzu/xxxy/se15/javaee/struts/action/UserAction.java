@@ -13,7 +13,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import cn.edu.chzu.xxxy.se15.javaee.struts.bean.ShoppingCartBean;
+import cn.edu.chzu.xxxy.se15.javaee.struts.bean.CartBean;
 import cn.edu.chzu.xxxy.se15.javaee.struts.bean.UserBean;
 import cn.edu.chzu.xxxy.se15.javaee.struts.dao.DaoFactory;
 import cn.edu.chzu.xxxy.se15.javaee.struts.service.UserService;
@@ -41,7 +41,7 @@ public class UserAction extends ActionSupport implements ModelDriven<UserBean>,
 			this.addActionMessage(this.getText("register.success"));
 			//璁剧疆session鑼冨洿鐨勫睘鎬�
 			session.put("user", registUser.getAccount());
-			session.put("shoppingcart", new ShoppingCartBean());
+			session.put("cart", new CartBean());
 			request.put("tip", "鎮ㄥ凡娉ㄥ唽鎴愬姛锛�");
 			return "success";
 		}

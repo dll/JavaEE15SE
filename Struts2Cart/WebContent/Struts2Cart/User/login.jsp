@@ -19,6 +19,7 @@
 				<s:password name="loginUser.password" key="login.password.lable" />
 				<s:hidden name="loginUser.usertype" value="3" />
 				<s:submit name="submit" key="login.submit.button" />
+				<s:reset name="reset" key="login.reset.button" />
 			</s:form>
 			<hr />
 			<a href="download?fileName=Struts2Cart.war">下载本站WAR文件:

@@ -1,6 +1,7 @@
 package cn.edu.chzu.xxxy.se15.javaee.struts.dbutil;
 /**
- * 连接数据库
+ * 连接数据库，复习、巩固JDBC，可以只使用DBCP数据库连接池的
+ * 另外，学习接口性方法的编写：抛出异常
  */
 	
 import java.sql.CallableStatement;

@@ -13,7 +13,7 @@
 <head>
 <base href="<%=basePath%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Struts2Cart主页</title>
+<title>Struts2Cart Demo</title>
 </head>
 <body>
 	<center>

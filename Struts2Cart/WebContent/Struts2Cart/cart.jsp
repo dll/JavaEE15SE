@@ -13,11 +13,7 @@
 		<table border=1>
 			<s:iterator value="#session.CartBean.itemsOrdered">
 				<tr>
-					<th>编号</th>
-					<th>名称</th>
-					<th>说明</th>
-					<th>单价</th>
-					<th>数量</th>
+					<th>编号</th>	<th>名称</th>	<th>说明</th>	<th>单价</th>	<th>数量</th>
 				</tr>
 				<tr>
 					<td><s:property value="itemID" /></td>

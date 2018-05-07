@@ -4,8 +4,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <%
-String path = request.getContextPath();//getContextPath获取application的名称:Struts2Cart,请求URI：getRequestURI
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String path = request.getRequestURI();//getContextPath获取application的名称:Struts2Cart,请求URI：getRequestURI +"/"
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path;
 //basePath="http://localhost:8080/Struts2Cart/"
 %>
 
@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>菜单</title>
 </head>
 <body>
+<s:i18n name="message">
 	<center>
 		<!-- if else逻辑标签 -->
 	    <s:if test="%{#session.user!=null}">
@@ -32,19 +33,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		|| 当前在线人数: <!-- ServLet监听器实现 -->
 			<%=String.valueOf(OnlineCounter.getCounter()) %>
 	    </s:else>| 
-	    <a href="index.jsp">0.index</a>
-		<a href="Struts2Cart/User/login.jsp">1.Login</a>
-		<a href="Struts2Cart/user.jsp">2.User</a>
+	    <a href="http://localhost:8080/Struts2Cart/index.jsp"><s:text  name="menu.0.Index"><s:param >首页</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/User/login.jsp"><s:text name="menu.1.Login"><s:param >登录</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/user.jsp"><s:text name="menu.2.User"><s:param >用户管理</s:param></s:text></a>
 		<!-- 使用s:url action 请求动作allItems -->
-		<a href="<s:url action="allItems"></s:url>">3.Item</a>
-		<a href="Struts2Cart/cart.jsp">4.Cart</a>
-		<a href="Struts2Cart/card.jsp">5.Card</a>
-		<a href="Struts2Cart/customer.jsp">6.Customer</a>
-		<a href="Struts2Cart/order.jsp">7.Order</a>||
-		<a href="Struts2Cart/admin.jsp">8.Admin</a>||
+		<a href="<s:url action="allItems"></s:url>"><s:text name="menu.3.Item"><s:param >商品管理</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/cart.jsp"><s:text name="menu.4.Cart"><s:param >购物车管理</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/card.jsp"><s:text name="menu.5.Card"><s:param >银行卡管理</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/customer.jsp"><s:text name="menu.6.Customer"><s:param >顾客管理</s:param></s:text></a>
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/order.jsp"><s:text name="menu.7.Order"><s:param >订单管理</s:param></s:text></a>||
+		<a href="http://localhost:8080/Struts2Cart/Struts2Cart/admin.jsp"><s:text name="menu.8.Admin"><s:param >设置</s:param></s:text></a>||
 		<!-- 使用html超链接a的href 请求动作userLogout -->
-		<a href="userLogout">9.logout</a>
+		<a href="userLogout"><s:text name="menu.9.Logout"><s:param >注销</s:param></s:text></a>
 	</center>
 	<hr />
+	</s:i18n>
 </body>
 </html>

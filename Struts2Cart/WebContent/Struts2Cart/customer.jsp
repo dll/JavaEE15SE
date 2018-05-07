@@ -11,14 +11,14 @@
 </head>
 <body>
 <center>
-<%@ include file="menu.jsp"%>
+<%@ include file="menu.jsp" %>
 	<s:i18n name="message">
-	<s:actionmessage/>
+	<s:actionmessage/><!-- 输入校验 -->
 	<s:actionerror/>
 	<s:fielderror/>
 	<s:form action="register" method="post">
-		<s:textfield name="account" label="请输入用户名" key="login.account.lable"/>
-		<s:password name="password" label="请输入密码" key="login.password.lable"/>
+		<s:textfield name="account" label="请输入用户名" key="register.account.lable"/>
+		<s:password name="password" label="请输入密码" key="register.password.lable"/>
 		<s:password name="repassword" label="请再次输入密码"/>
 		<s:textfield name="name" label="请输入真实姓名"/>
 		<s:radio name="sex" list="#{1:'男',0:'女'}" label="请输入性别"/>
@@ -28,8 +28,8 @@
 		<s:textfield name="address" label="请输入联系地址"/>
 		<s:textfield name="phone" label="请输入联系电话"/>
 		<s:textfield name="email" label="请输入电子邮箱"/><br/>
-		<s:submit value="注册" key="login.submit.button"/>
-		<s:reset value="重置" key="login.submit.button"/><br/>
+		<s:submit value="注册" key="register.submit.button"/>
+		<s:reset value="重置" key="register.submit.button"/><br/>
 	</s:form>   
 	</s:i18n> 
 </center>

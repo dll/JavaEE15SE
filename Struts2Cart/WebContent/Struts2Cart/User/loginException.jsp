@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>登录异常</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>鐧诲綍寮傚父</title>
 </head>
 <body>
-异常信息：<s:property value="exception.message"/>
+寮傚父淇℃伅锛�<s:property value="exception.message"/>
 </body>
 </html>

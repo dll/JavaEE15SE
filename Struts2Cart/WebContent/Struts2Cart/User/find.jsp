@@ -25,6 +25,6 @@
 	</table>
 	<hr/>
 	所有用户信息：
-	<a href="./allUsers">查看所有用户信息...</a><br>
+	<a href="allUsers">查看所有用户信息...</a><br>
 </body>
 </html>

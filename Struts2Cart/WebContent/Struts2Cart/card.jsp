@@ -13,6 +13,7 @@
 <body>
 <%@ include file="menu.jsp"%>
 	<s:i18n name="message">
+		<!-- sql标签  最好不用 -->
 		<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
 			url="jdbc:mysql://localhost:3306/struts2cartdb?useUnicode=true&characterEncoding=utf-8"
 			user="root" password="" />
@@ -27,11 +28,7 @@
 			<c:if test="${!empty result.rows}">
 				<table border="1" cellpadding="10" cellspacing="0">
 					<tr>
-						<td>银行名称</td>
-						<td>银行卡号</td>
-						<td>银行卡密码</td>
-						<td>*修改*</td>
-						<td>*删除*</td>
+						<td>银行名称</td><td>银行卡号</td><td>银行卡密码</td><td>*修改*</td><td>*删除*</td>
 					</tr>
 					<c:forEach items="${result.rows}" var="row">
 						<tr>

@@ -8,6 +8,6 @@
 </head>
 <body>
 <%@ include file="menu.jsp" %>
-留给同学们...
+留给同学们...Hibernate框架学习
 </body>
 </html>

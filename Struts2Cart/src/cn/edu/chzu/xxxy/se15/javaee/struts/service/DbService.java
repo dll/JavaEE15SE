@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import cn.edu.chzu.xxxy.se15.javaee.struts.dbutil.DbcpPool;
-
+/**
+ * 前面项目使用的，已经改写在InitCartDbAction中
+ * */
 public class DbService {
 	
 	public static void createDaoOrderTable(){

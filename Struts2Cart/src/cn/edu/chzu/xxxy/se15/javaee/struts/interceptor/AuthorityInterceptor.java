@@ -7,7 +7,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-
+/**
+ * 安全性检测：extends AbstractInterceptor
+ * */
 public class AuthorityInterceptor extends AbstractInterceptor {
 
 	/**

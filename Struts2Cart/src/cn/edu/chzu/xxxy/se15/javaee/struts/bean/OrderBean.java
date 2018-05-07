@@ -1,6 +1,5 @@
 package cn.edu.chzu.xxxy.se15.javaee.struts.bean;
 
-
 	/**
 	 * 
 	字段名	类型	主、索引或外键	描述

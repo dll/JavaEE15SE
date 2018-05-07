@@ -28,7 +28,7 @@ public class I18nCartAction extends ActionSupport {
 		}
 		else if("english".equals(getI18n())){
 			System.out.println(" \n选择英文!");
-	        Locale locale = new Locale("en","US");  
+	        Locale locale = new Locale("en","GB");  
 	        session.put("WW_TRANS_I18N_LOCALE",locale); 
 			return "success";
 		}else{

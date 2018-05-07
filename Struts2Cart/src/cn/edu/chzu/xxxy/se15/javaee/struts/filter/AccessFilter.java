@@ -22,11 +22,13 @@ public class AccessFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		HttpSession session = request.getSession();
-		if (session.getAttribute("user") == null && request.getRequestURI().indexOf("login.jsp") == -1
+		if (session.getAttribute("user") == null 
+				&& request.getRequestURI().indexOf("login.jsp") == -1
 				&& request.getRequestURI().indexOf("register.jsp") == -1 
 				&& request.getRequestURI().indexOf("index.jsp") == -1
 				&& request.getRequestURI().indexOf("admin.jsp") == -1
-				&& request.getRequestURI().indexOf("itemList.jsp") == -1){
+				//&& request.getRequestURI().indexOf("itemList.jsp") == -1
+				){
 			response.sendRedirect("/Struts2Cart/Struts2Cart/User/login.jsp");
 			return;
 		}

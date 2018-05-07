@@ -4,7 +4,6 @@
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-	<constant name="struts.configuration.xml.reload" value="true"/>
 	<constant name="struts.action.extension" value=","/>  
 	<constant name="struts.devMode" value="false"/>
 	<constant name="struts.costom.i18n.resources" value="message"/>  
@@ -24,17 +23,17 @@
 			<result name="fail">/index.jsp</result>
 			<result name="input">/Struts2Cart/admin.jsp</result>
 		</action>
-		<action name="i18nCart" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.I18nCartAction">
+		<action name="i18nCart" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.I18nCartAction">		
 			<result name="input">/Struts2Cart/admin.jsp</result>
-			<result name="success">/Struts2Cart/User/login.jsp</result>
+			<result name="success">/index.jsp</result>
 		</action>
 		
 		<action name="userLogin" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction">
+		<!-- 	<interceptor-ref name="i18nlocal"/> -->
 			<result name="admin">/Struts2Cart/admin.jsp</result>
 			<result name="success">/Struts2Cart/User/loginSuccess.jsp</result>
 			<result name="login">/Struts2Cart/User/login.jsp</result>
 			<result name="exception">/Struts2Cart/User/loginException.jsp</result>
-			<!-- <interceptor-ref name="i18nlocal"/> -->
 		</action>
 		<action name="userLogout" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction" method="logout">
 			<result name="success">/index.jsp</result>
@@ -64,7 +63,6 @@
 			<result name="login">/Struts2Cart/User/login.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="authority"/>
-			<interceptor-ref name="i18nlocal"/>
 		</action>
 		<action name="ItemAction" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
 				method="newItem">
@@ -72,7 +70,6 @@
 			<result name="fail">/Struts2Cart/Item/newItem.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="authority"/>
-			<interceptor-ref name="i18nlocal"/>
 			<interceptor-ref name="basicStack"/>
        		<interceptor-ref name="fileUpload">
            		<param name="allowedTypes">image/png,image/jpeg,image/jpg,image/gif</param>

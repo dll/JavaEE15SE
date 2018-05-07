@@ -6,8 +6,12 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
-
-public class CheckInterceptor extends AbstractInterceptor{
+import com.opensymphony.xwork2.interceptor.Interceptor;
+/**
+ * 国际化拦截：extends AbstractInterceptor
+ * implements Interceptor
+ * */
+public class CheckInterceptor implements Interceptor{
 	private static final long serialVersionUID = -1112495747942034188L;
 
 	@Override
@@ -20,6 +24,18 @@ public class CheckInterceptor extends AbstractInterceptor{
 			session.put("WW_TRANS_I18N_LOCALE",locale);
 		}
 		return ai.invoke();
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void init() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
