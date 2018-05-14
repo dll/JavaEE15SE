@@ -1,2 +1,7 @@
 /cn/
+/log4j2.xml
 /message_en_GB.properties
+/message_zh_CN.properties
+/message_zh_CN_temp.properties
+/struts.properties
+/struts.xml

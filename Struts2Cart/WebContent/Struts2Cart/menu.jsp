@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		<s:param name="account">游客</s:param> <!-- 设置参数 --> 
          		<s:property value="#session.account"/><!-- 获取属性 -->  
      		</s:bean> 
-     		|| 当前在线人数: <!-- ServLet监听器实现 -->
+     		|| 当前在线人数:
 			<%=String.valueOf(OnlineCounter.getCounter()) %>
 	    </s:else>| 
 	    <a href="http://localhost:8080/Struts2Cart/index.jsp"><s:text  name="menu.0.Index"><s:param >首页</s:param></s:text></a>

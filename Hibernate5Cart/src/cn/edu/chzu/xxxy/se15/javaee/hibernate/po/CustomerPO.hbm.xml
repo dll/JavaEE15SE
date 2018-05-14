@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- 
+   实现PO类与数据库表之间的映射，以后Hibernate直接操作的是PO类，但最终受影响的是数据库表
+   lazy是否采取延迟加载
+-->
+<hibernate-mapping>
+    <class name="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.CustomerPO" table="CustomerPO" lazy="false">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="increment"></generator>
+        </id>
+        <property name="account" type="java.lang.String">
+            <column name="account" length="20"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" length="20"/>
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="name" length="20"/>
+        </property>
+                <property name="gender" type="java.lang.String">
+            <column name="gender" length="10"/>
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="birthday" length="20"/>
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" length="100"/>
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" length="20"/>
+        </property>        
+        <property name="email" type="java.lang.String">
+            <column name="email" length="20"/>
+        </property>
+        <property name="usertype" type="java.lang.Integer">
+            <column name="usertype"/>
+        </property>
+        <property name="hobby" type="java.lang.String">
+            <column name="hobby" length="100"/>
+        </property>
+        <property name="introduction" type="java.lang.String">
+            <column name="introduction" length="255"/>
+        </property>
+    </class>
+</hibernate-mapping>

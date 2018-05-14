@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name="struts.action.extension" value=","/>  
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.costom.i18n.resources" value="message"/>  
+    <package name="Hibernate5Cart" extends="struts-default" namespace="/">
+    	<interceptors>
+			<interceptor name="authority" class="cn.edu.chzu.xxxy.se15.javaee.struts.interceptor.AuthorityInterceptor"/>
+			<interceptor name="i18nlocal" class="cn.edu.chzu.xxxy.se15.javaee.struts.interceptor.CheckInterceptor"/>
+		</interceptors>
+		<global-results>
+			<result name="sqlExcp">/S2H5/User/registException.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="sqlExcp" exception="java.sql.SQLException"/>
+		</global-exception-mappings>
+		<action name="initCartDb" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.InitCartDbAction">
+			<result name="success">/S2H5/User/login.jsp</result>
+			<result name="fail">/index.jsp</result>
+			<result name="input">/S2H5/admin.jsp</result>
+		</action>
+		<action name="i18nCart" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.I18nCartAction">		
+			<result name="input">/S2H5/admin.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="userLogin" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction">
+			<result name="admin">/S2H5/admin.jsp</result>
+			<result name="success">/S2H5/User/loginSuccess.jsp</result>
+			<result name="login">/S2H5/User/login.jsp</result>
+			<result name="exception">/S2H5/User/loginException.jsp</result>
+		</action>
+		<action name="userLogout" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction" method="logout">
+			<result name="success">/index.jsp</result>
+			<result name="exception">/S2H5/User/login.jsp</result>
+		</action>
+		<action name="userRegister" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction">
+			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
+			<result name="userExcp">/S2H5/User/registException.jsp</result>
+			<result name="success">/S2H5/User/regSuccess.jsp</result>
+			<result name="fail">/S2H5/User/regFail.jsp</result>
+			<result name="input">/S2H5/User/register.jsp</result>
+			<result name="exception">/S2H5/User/registException.jsp</result>
+		</action>
+		<action name="userDelete" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction" method="userDelete">		
+			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
+			<result name="success">/S2H5/User/delSuccess.jsp</result>
+			<result name="fail">/S2H5/User/delFail.jsp</result>
+		</action>
+		<action name="userEdit" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction" method="userEdit">		
+			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
+			<result name="success">/S2H5/User/find.jsp</result>
+			<result name="fail">/S2H5/User/edit.jsp</result>
+		</action>
+		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
+				method="getAllItems">
+			<result name="success">/S2H5/Item/itemList.jsp</result>
+			<result name="login">/S2H5/User/login.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+		</action>
+		<action name="ItemAction" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
+				method="newItem">
+			<result name="success">/S2H5/Item/itemList.jsp</result>
+			<result name="fail">/S2H5/Item/newItem.jsp</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="authority"/>
+			<interceptor-ref name="basicStack"/>
+       		<interceptor-ref name="fileUpload">
+           		<param name="allowedTypes">image/png,image/jpeg,image/jpg,image/gif</param>
+       		</interceptor-ref>
+		</action>
+		<!-- 配置DownloadAction -->
+	    <action name="download" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction" method="downloadFile">  
+	        <param name="inputPath">/download</param>  
+	        <!-- result type设置为stream -->  
+	        <result name="success" type="stream">  
+	            <!-- MIME类型 -->  
+	            <param name="contentType">application/octet-stream</param>  
+	            <!-- inputName的值与action获取输入流资源的方法名相对应(action中定义getInputStream方法,并且返回类型为InputStream) -->  
+	            <param name="inputName">inputStream</param>  
+	            <!-- 设置带附件的文件 动态获取文件名(action中定义getDownloadFileName方法) -->  
+	            <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+	            <!-- 设置缓冲大小 -->  
+	            <param name="bufferSize">2048</param>  
+	        </result>  
+	    </action>  
+		<action name="allUsers" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction"
+				method="getAllUsers">
+			<result name="success">/S2H5/User/userList.jsp</result>
+			<result name="login">/S2H5/User/login.jsp</result>
+		</action>
+		<action name="customer" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction"
+				method="addCustomer">
+			<result name="add">/S2H5/customer.jsp</result>
+		</action>
+		<action name="customer" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction"
+				method="listCustomer">
+			<result name="list">/S2H5/customer.jsp</result>
+		</action>
+		
+    </package>
+    
+</struts>
