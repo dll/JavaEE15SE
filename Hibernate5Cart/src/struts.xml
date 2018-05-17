@@ -7,66 +7,66 @@
 	<constant name="struts.action.extension" value=","/>  
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.costom.i18n.resources" value="message"/>  
-    <package name="Hibernate5Cart" extends="struts-default" namespace="/">
+    <package name="Hibernate5Cart" extends="struts-default" namespace="">
     	<interceptors>
 			<interceptor name="authority" class="cn.edu.chzu.xxxy.se15.javaee.struts.interceptor.AuthorityInterceptor"/>
 			<interceptor name="i18nlocal" class="cn.edu.chzu.xxxy.se15.javaee.struts.interceptor.CheckInterceptor"/>
 		</interceptors>
 		<global-results>
-			<result name="sqlExcp">/S2H5/User/registException.jsp</result>
+			<result name="sqlExcp"  type="redirect">/S2H5/User/registException.jsp</result>
 		</global-results>
 		<global-exception-mappings>
 			<exception-mapping result="sqlExcp" exception="java.sql.SQLException"/>
 		</global-exception-mappings>
 		<action name="initCartDb" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.InitCartDbAction">
-			<result name="success">/S2H5/User/login.jsp</result>
-			<result name="fail">/index.jsp</result>
-			<result name="input">/S2H5/admin.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/login.jsp</result>
+			<result name="fail"  type="dispatcher">/index.jsp</result>
+			<result name="input"  type="redirect">/S2H5/admin.jsp</result>
 		</action>
 		<action name="i18nCart" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.I18nCartAction">		
-			<result name="input">/S2H5/admin.jsp</result>
-			<result name="success">/index.jsp</result>
+			<result name="input"  type="redirect">/S2H5/admin.jsp</result>
+			<result name="success"  type="dispatcher">/index.jsp</result>
 		</action>
 		
 		<action name="userLogin" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction">
-			<result name="admin">/S2H5/admin.jsp</result>
-			<result name="success">/S2H5/User/loginSuccess.jsp</result>
-			<result name="login">/S2H5/User/login.jsp</result>
-			<result name="exception">/S2H5/User/loginException.jsp</result>
+			<result name="admin"  type="redirect">/S2H5/admin.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/loginSuccess.jsp</result>
+			<result name="login"  type="redirect">/S2H5/User/login.jsp</result>
+			<result name="exception"  type="redirect">/S2H5/User/loginException.jsp</result>
 		</action>
 		<action name="userLogout" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.LoginAction" method="logout">
-			<result name="success">/index.jsp</result>
-			<result name="exception">/S2H5/User/login.jsp</result>
+			<result name="success"  type="dispatcher">/index.jsp</result>
+			<result name="exception"  type="redirect">/S2H5/User/login.jsp</result>
 		</action>
 		<action name="userRegister" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction">
 			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
-			<result name="userExcp">/S2H5/User/registException.jsp</result>
-			<result name="success">/S2H5/User/regSuccess.jsp</result>
-			<result name="fail">/S2H5/User/regFail.jsp</result>
-			<result name="input">/S2H5/User/register.jsp</result>
-			<result name="exception">/S2H5/User/registException.jsp</result>
+			<result name="userExcp"  type="redirect">/S2H5/User/registException.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/regSuccess.jsp</result>
+			<result name="fail"  type="redirect">/S2H5/User/regFail.jsp</result>
+			<result name="input"  type="redirect">/S2H5/User/register.jsp</result>
+			<result name="exception"  type="redirect">/S2H5/User/registException.jsp</result>
 		</action>
 		<action name="userDelete" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction" method="userDelete">		
 			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
-			<result name="success">/S2H5/User/delSuccess.jsp</result>
-			<result name="fail">/S2H5/User/delFail.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/delSuccess.jsp</result>
+			<result name="fail"  type="redirect">/S2H5/User/delFail.jsp</result>
 		</action>
 		<action name="userEdit" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction" method="userEdit">		
 			<exception-mapping result="userExcp" exception="cn.edu.chzu.xxxy.se15.javaee.struts.exception.UserException"/>
-			<result name="success">/S2H5/User/find.jsp</result>
-			<result name="fail">/S2H5/User/edit.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/find.jsp</result>
+			<result name="fail"  type="redirect">/S2H5/User/edit.jsp</result>
 		</action>
-		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
+<!-- 		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
 				method="getAllItems">
-			<result name="success">/S2H5/Item/itemList.jsp</result>
-			<result name="login">/S2H5/User/login.jsp</result>
+			<result name="success"  type="redirect">/S2H5/Item/itemList.jsp</result>
+			<result name="login"  type="redirect">/S2H5/User/login.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="authority"/>
-		</action>
+		</action> -->
 		<action name="ItemAction" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.ItemAction"
 				method="newItem">
-			<result name="success">/S2H5/Item/itemList.jsp</result>
-			<result name="fail">/S2H5/Item/newItem.jsp</result>
+			<result name="success"  type="redirect">/S2H5/Item/itemList.jsp</result>
+			<result name="fail"  type="redirect">/S2H5/Item/newItem.jsp</result>
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="authority"/>
 			<interceptor-ref name="basicStack"/>
@@ -91,18 +91,21 @@
 	    </action>  
 		<action name="allUsers" class="cn.edu.chzu.xxxy.se15.javaee.struts.action.UserAction"
 				method="getAllUsers">
-			<result name="success">/S2H5/User/userList.jsp</result>
-			<result name="login">/S2H5/User/login.jsp</result>
+			<result name="success"  type="redirect">/S2H5/User/userList.jsp</result>
+			<result name="login"  type="redirect">/S2H5/User/login.jsp</result>
 		</action>
 		<action name="customer" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction"
 				method="addCustomer">
-			<result name="add">/S2H5/customer.jsp</result>
+			<result name="regSuccess"  type="redirect">/S2H5/Customer/regSuccess.jsp</result>
+			<result name="regFail"  type="redirect">/S2H5/Customer/regFail.jsp</result>
 		</action>
 		<action name="customer" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction"
 				method="listCustomer">
-			<result name="list">/S2H5/customer.jsp</result>
+			<result name="list"  type="redirect">S2H5/customer.jsp</result>
 		</action>
-		
+		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.ItemAction" method="getAllItems">
+			<result name="success">S2H5/Item/itemList.jsp</result>
+		</action>
     </package>
     
 </struts>

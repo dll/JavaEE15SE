@@ -16,20 +16,18 @@
 	<s:actionmessage/><!-- 输入校验 -->
 	<s:actionerror/>
 	<s:fielderror/>
-	<s:form action="customer" method="post">
-		<s:textfield name="account" label="请输入用户名" key="customer.account.lable"/>
-		<s:password name="password" label="请输入密码" key="customer.password.lable"/>
-		<s:password name="repassword" label="请再次输入密码"/>
-		<s:textfield name="name" label="请输入真实姓名"/>
-		<s:radio name="gender" list="#{1:'男',0:'女'}" label="请输入性别"/>
-		<sx:datetimepicker name="birthday" displayFormat="yyyy-mm-dd" label="请输入生日"/> 
-		<s:textfield name="address" label="请输入联系地址"/>
-		<s:textfield name="phone" label="请输入联系电话"/>
-		<s:textfield name="email" label="请输入电子邮箱"/><br/>
-		<s:submit value="注册" key="customer.submit.button"/>
-		<s:reset value="重置" key="customer.submit.button"/><br/>
-	</s:form>   
-	<hr/>
+	<center>
+		<a href="S2H5/Customer/register.jsp">注册顾客</a><br />
+		<s:url var="deleteurl" action="customerDelete">
+			<s:param name="account">
+				<s:property value="#session.customer" />
+			</s:param>
+		</s:url>
+		<s:a href="%{deleteurl}">删除顾客</s:a>
+		<br/> <a href="S2H5/Customer/edit.jsp">修改顾客</a>
+		<br/> <a href="S2H5/Customer/find.jsp">查询顾客</a>
+	</center>
+	
 	<s:if test="customerList.size() > 0">
 	<table border="1px" cellpadding="8px">
 		<tr>

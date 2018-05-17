@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Customer"
+		table="customers" catalog="hibernate5cartdb">
+		<id name="customerId" type="int">
+			<column name="customerID" />
+			<generator class="increment" />
+		</id>
+		 <property name="account" type="string">
+            <column name="account" length="20" unique="true" not-null="true"/>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20"  not-null="true"/>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="20" />
+        </property>
+        <property name="sex" type="java.lang.Boolean">
+            <column name="sex" />
+        </property>
+        <property name="birthday" type="date">
+            <column name="birthday" length="10" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <set name="addresses" inverse="true" cascade="all" lazy="false"> 
+              <key column="cust_id"/> 
+              <one-to-many class="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Address"/> 
+        </set>
+    </class>
+</hibernate-mapping>

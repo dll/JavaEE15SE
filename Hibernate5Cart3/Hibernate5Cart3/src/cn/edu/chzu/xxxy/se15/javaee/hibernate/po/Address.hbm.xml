@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2014-10-2 23:45:11 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Address"
+		table="addresses" catalog="hibernate5cartdb">
+		<id name="addressId" type="int">
+			<column name="addressID" />
+			<generator class="increment" />
+		</id>
+		<property name="detail" type="string">
+			<column name="detail" length="200" />
+		</property>
+		<property name="zipcode" type="string">
+			<column name="zipcode" length="10" />
+		</property>
+		<property name="phone" type="string">
+			<column name="phone" length="20" />
+		</property>
+		<property name="type" type="string">
+			<column name="type" length="20" />
+		</property>
+		<many-to-one name="customer" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Customer"
+			fetch="select">
+			<column name="cust_id" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

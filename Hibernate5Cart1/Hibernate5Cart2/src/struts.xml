@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="Hibernate5Cart2" extends="struts-default"
+		namespace="/Hibernate5Cart2"> 
+ 		<action name="User*" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="{1}">
+			<result name="{1}success">/{1}Success.jsp</result>
+			<result name="{1}fail">/{1}Fail.jsp</result>		
+		</action>
+	</package>
+</struts>    

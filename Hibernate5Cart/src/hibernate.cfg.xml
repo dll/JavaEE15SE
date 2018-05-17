@@ -20,7 +20,9 @@
 		</property>
 		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
 		<property name="use_sql_comments">false</property>
+		
 		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/CustomerPO.hbm.xml" />
+		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/ItemsPojo.hbm.xml" />
 	</session-factory>
 
 </hibernate-configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="Hibernate5Cart2" extends="struts-default"
+		namespace="/Customer"> 
+ 		<action name="Customer*" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="{1}">
+			<result name="{1}success">/{1}Success.jsp</result>
+			<result name="{1}fail">/{1}Fail.jsp</result>	
+			<result name="updatesuccess">/crudSuccess.jsp</result>
+			<result name="updatefail">/crudFail.jsp</result>	
+			<result name="deletesuccess">/login.jsp</result>
+			<result name="deletefail">/crudFail.jsp</result>
+			<!-- Thank Sun  -->
+			<allowed-methods >login,register,update,delete,addAddr</allowed-methods>	
+		</action>
+		<!-- <action name="Customerlogin" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="login">
+			<result name="loginsuccess">/loginSuccess.jsp</result>
+			<result name="loginfail">/loginFail.jsp</result>		
+		</action>
+		<action name="Customerupdate" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="update">
+			<result name="updatesuccess">/crudSuccess.jsp</result>
+			<result name="updatefail">/crudFail.jsp</result>		
+		</action>
+		<action name="Customerregister" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="register">
+			<result name="registersuccess">/registerSuccess.jsp</result>
+			<result name="registerfail">/registerFail.jsp</result>		
+		</action>
+		<action name="Customerdelete" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.CustomerAction" method="delete">
+			<result name="deletesuccess">/login.jsp</result>
+			<result name="deletefail">/crudFail.jsp</result>		
+		</action> -->
+	</package>
+</struts>    

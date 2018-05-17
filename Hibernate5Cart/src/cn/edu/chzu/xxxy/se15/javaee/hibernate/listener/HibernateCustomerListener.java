@@ -9,11 +9,6 @@ import java.net.URL;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
  
-
-/**
- * Application Lifecycle Listener implementation class HibernateCustomerListener
- *
- */
 @WebListener
 public class HibernateCustomerListener implements ServletContextListener {
     private Configuration config;
