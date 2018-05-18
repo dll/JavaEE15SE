@@ -14,5 +14,6 @@
 		
 		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Customer.hbm.xml" />
 		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Address.hbm.xml" />
+		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Item.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>
