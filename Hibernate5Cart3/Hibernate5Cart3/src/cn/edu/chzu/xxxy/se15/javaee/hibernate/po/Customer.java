@@ -22,7 +22,7 @@ public class Customer implements Serializable {
 //	private String zipcode;
 //	private String fax;
 
-	//private Set addresses = new HashSet(0);//1对多的多
+	private Set addresses = new HashSet(0);//1对多的多
 
 	private ContactInfo contactInfo;
 	
@@ -136,14 +136,14 @@ public class Customer implements Serializable {
 //		this.repassword = repassword;
 //	}
 
-/*	public Set getAddresses() {
+	public Set getAddresses() {
 		return addresses;
 	}
 
 	public void setAddresses(Set addresses) {
 		System.out.println("Set addresses:"+addresses);
 		this.addresses = addresses;
-	}*/
+	}
 
 	public ContactInfo getContactInfo() {
 		return contactInfo;

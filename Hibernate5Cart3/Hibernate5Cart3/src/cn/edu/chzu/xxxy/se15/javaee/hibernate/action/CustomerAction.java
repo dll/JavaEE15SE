@@ -78,4 +78,15 @@ public class CustomerAction extends ActionSupport {
 	public void setAddresses(Set addresses) {
 		this.addresses = addresses;
 	}
+	
+	public String delAddr() {
+		CustomerService userServ = new CustomerService();
+		System.out.println(address.getAddressId());
+		
+		if (userServ.delAddr(loginUser, address)) 
+			return "updatesucc";
+		else
+			return "CRUDfail";
+			
+	}
 }

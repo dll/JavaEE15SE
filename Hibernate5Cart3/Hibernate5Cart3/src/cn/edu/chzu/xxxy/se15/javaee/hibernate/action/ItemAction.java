@@ -22,4 +22,10 @@ public class ItemAction{
 		return "success";
 	}
 
+	public String findItems() {
+		ItemService itemServ = new ItemService();
+		items=itemServ.findByHql();
+		System.out.println("Item Action executed!");
+		return "success";
+	}
 }

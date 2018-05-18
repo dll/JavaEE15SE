@@ -67,5 +67,7 @@
 </s:form>
 <hr>
 <a href="./allItems">查看所有商品信息</a><br>
+<a href="./findItems">查看商品信息</a><br>
+
 </body>
 </html>

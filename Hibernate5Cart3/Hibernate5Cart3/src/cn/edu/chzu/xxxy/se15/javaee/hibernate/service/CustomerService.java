@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import cn.edu.chzu.xxxy.se15.javaee.hibernate.dao.AddressDAO;
 import cn.edu.chzu.xxxy.se15.javaee.hibernate.dao.CustomerDAO;
 import cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Address;
 import cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Customer;
@@ -119,4 +120,27 @@ public class CustomerService {
 			c_dao.getSession().close();
 		}
 	}*/
+	
+	public boolean delAddr(Customer loginUser, Address address) {
+		ActionContext ctx= ActionContext.getContext();
+		request=(Map) ctx.get("request");
+		CustomerDAO c_dao = new CustomerDAO();
+		AddressDAO a_dao = new AddressDAO();
+		loginUser = (Customer)c_dao.findById(loginUser.getCustomerId());
+		address = (Address)a_dao.findById(address.getAddressId());
+		//address.setCustomer(loginUser);
+		loginUser.getAddresses().remove(address);
+		try {
+			Transaction tran = c_dao.getSession().beginTransaction();
+			c_dao.update(loginUser);
+			tran.commit();
+			request.put("loginUser", loginUser);
+			request.put("tip", "É¾³ýµØÖ·³É¹¦£¡");
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			c_dao.getSession().close();
+		}
+	}
 }

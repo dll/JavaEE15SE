@@ -18,5 +18,8 @@
 		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.ItemAction" method="getAllItems">
 			<result name="success">/itemList.jsp</result>
 		</action>
+		<action name="findItems" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.ItemAction" method="findItems">
+			<result name="success">/itemList2.jsp</result>
+		</action>
 	</package>
 </struts>    
