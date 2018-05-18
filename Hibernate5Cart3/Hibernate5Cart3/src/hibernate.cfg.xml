@@ -5,6 +5,7 @@
 
 <hibernate-configuration>
 	<session-factory name="Hibernate5Cart">
+		<property name="connection.autocommit">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate5cartdb</property>
@@ -14,6 +15,8 @@
 		
 		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Customer.hbm.xml" />
 		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Address.hbm.xml" />
-		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Item.hbm.xml" />
+		<!-- <mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/Item.hbm.xml" /> -->
+		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/ItemBasic.hbm.xml" />
+		<mapping resource="cn/edu/chzu/xxxy/se15/javaee/hibernate/po/ItemDetail.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

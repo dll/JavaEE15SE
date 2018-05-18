@@ -15,6 +15,7 @@
 <th>书名</th>
 <th>说明</th>
 <th>单价</th>
+<th>图片？</th>
 </tr>
 <s:iterator value="items" >
 <tr>
@@ -22,6 +23,7 @@
     <td><s:property value="title"/></td>
     <td><s:property value="description"/></td>  
     <td><s:property value="cost"/></td>
+    <td><s:property value="image"/></td>
 </tr>
 </s:iterator>
 </table>

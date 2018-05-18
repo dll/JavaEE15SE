@@ -13,7 +13,7 @@
 			<result name="deletesuccess">/login.jsp</result>
 			<result name="deletefail">/crudFail.jsp</result>
 			<!-- Thank Sun  -->
-			<allowed-methods >login,register,update,delete,addAddr</allowed-methods>	
+			<allowed-methods >login,register,update,delete</allowed-methods>	
 		</action>
 		<action name="allItems" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.action.ItemAction" method="getAllItems">
 			<result name="success">/itemList.jsp</result>

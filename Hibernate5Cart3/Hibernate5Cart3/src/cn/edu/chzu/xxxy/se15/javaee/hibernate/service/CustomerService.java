@@ -37,7 +37,7 @@ public class CustomerService {
 		}
 	}
 
-	public boolean register(Customer loginUser) {
+	/*public boolean register(Customer loginUser) {
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
 		request=(Map) ctx.get("request");
@@ -55,7 +55,12 @@ public class CustomerService {
 			dao.getSession().close();
 		}
 	}
-
+*/
+	public void register(Customer loginUser) {
+		CustomerDAO dao = new CustomerDAO();				
+		dao.save(loginUser);
+	}
+	
 	public boolean update(Customer loginUser) {
 		ActionContext ctx= ActionContext.getContext();
 		session=(Map) ctx.getSession();
@@ -93,7 +98,7 @@ public class CustomerService {
 			dao.getSession().close();
 		}
 	}
-	public boolean addAddr(Customer loginUser, Address address) {
+	/*public boolean addAddr(Customer loginUser, Address address) {
 		ActionContext ctx= ActionContext.getContext();
 		request=(Map) ctx.get("request");
 		CustomerDAO c_dao = new CustomerDAO();
@@ -113,5 +118,5 @@ public class CustomerService {
 		} finally {
 			c_dao.getSession().close();
 		}
-	}
+	}*/
 }

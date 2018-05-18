@@ -25,12 +25,27 @@
         <property name="birthday" type="date">
             <column name="birthday" length="10" />
         </property>
-        <property name="email" type="string">
-            <column name="email" length="100" />
-        </property>
-        <set name="addresses" inverse="true" cascade="all" lazy="false"> 
+ 
+        <component name="contactInfo" class="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.ContactInfo">
+			<property name="phone" type="string">
+				<column name="phone" length="20" />
+			</property>
+			<property name="email" type="string">
+				<column name="email" length="100" />
+			</property>
+			<property name="address" type="string">
+				<column name="address" length="200" />
+			</property>
+			<property name="zipcode" type="string">
+				<column name="zipcode" length="10" />
+			</property>
+			<property name="fax" type="string">
+				<column name="fax" length="20" />
+			</property>
+		</component>
+<!--         <set name="addresses" inverse="true" cascade="all" lazy="false"> 
               <key column="cust_id"/> 
               <one-to-many class="cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Address"/> 
-        </set>
+        </set> -->
     </class>
 </hibernate-mapping>

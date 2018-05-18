@@ -27,12 +27,18 @@ public class CustomerAction extends ActionSupport {
 		}
 		return "loginfail";
 	}		
-	public String register() {
+/*	public String register() {
 		CustomerService userServ = new CustomerService();
 		if (userServ.register(loginUser))
 			return "registersuccess";
 		else
 			return "registerfail";
+	}*/
+	
+	public String register() {
+		CustomerService userServ = new CustomerService();
+		userServ.register(loginUser);
+		return "registersuccess";
 	}
 	
 	public String update() {
@@ -59,13 +65,13 @@ public class CustomerAction extends ActionSupport {
 	}
 	private Set addresses = new HashSet(0);
 	
-	public String addAddr() {
+	/*public String addAddr() {
 		CustomerService userServ = new CustomerService();
 		if (userServ.addAddr(loginUser, address)) 
 			return "updatesuccess";
 		else
 			return "updatefail";
-	}
+	}*/
 	public Set getAddresses() {
 		return addresses;
 	}

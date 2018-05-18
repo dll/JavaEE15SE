@@ -11,18 +11,20 @@ public class Customer implements Serializable {
 	private int customerId;
 	private String account;
 	private String password;
-	private String repassword;
+	////private String repassword;
 	private String name;
 	private Boolean sex;
-	private String sexStr;
+	////private String sexStr;
 	private Date birthday;
 //	private String phone;
-	private String email;
+	////private String email;
 //	private String address;
 //	private String zipcode;
 //	private String fax;
 
-	private Set addresses = new HashSet(0);//1对多的多
+	//private Set addresses = new HashSet(0);//1对多的多
+
+	private ContactInfo contactInfo;
 	
 	public int getCustomerId() {
 		return customerId;
@@ -72,19 +74,32 @@ public class Customer implements Serializable {
 		this.birthday = birthday;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public Customer() {
 		super();
 	}
-
 	public Customer(int customerId, String account, String password, String name, Boolean sex, Date birthday,
+			ContactInfo contactInfo) {
+		super();
+		this.customerId = customerId;
+		this.account = account;
+		this.password = password;
+		this.name = name;
+		this.sex = sex;
+		this.birthday = birthday;
+		//this.email = email;
+		//this.addresses = addresses;
+		this.contactInfo=contactInfo;
+	}
+	
+/*	public Customer(int customerId, String account, String password, String name, Boolean sex, Date birthday,
 			String email, Set addresses) {
 		super();
 		this.customerId = customerId;
@@ -93,41 +108,49 @@ public class Customer implements Serializable {
 		this.name = name;
 		this.sex = sex;
 		this.birthday = birthday;
-		this.email = email;
+		//this.email = email;
 		this.addresses = addresses;
-	}
+	}*/
 
-	public String getSexStr() {
-		System.out.println("getSexStr"+this.sex);
-		if(this.sex)
-			return "1";
-		else
-			return "0";
-	}
+//	public String getSexStr() {
+//		System.out.println("getSexStr"+this.sex);
+//		if(this.sex)
+//			return "1";
+//		else
+//			return "0";
+//	}
+//
+//	public void setSexStr(String sexStr) {
+//		System.out.println("setSexStr"+this.sexStr);
+//		if(this.sexStr.equals("1"))
+//			this.sex = true;
+//		else
+//			this.sex = false;
+//	}
+//
+//	public String getRepassword() {
+//		return repassword;
+//	}
+//
+//	public void setRepassword(String repassword) {
+//		this.repassword = repassword;
+//	}
 
-	public void setSexStr(String sexStr) {
-		System.out.println("setSexStr"+this.sexStr);
-		if(this.sexStr.equals("1"))
-			this.sex = true;
-		else
-			this.sex = false;
-	}
-
-	public String getRepassword() {
-		return repassword;
-	}
-
-	public void setRepassword(String repassword) {
-		this.repassword = repassword;
-	}
-
-	public Set getAddresses() {
+/*	public Set getAddresses() {
 		return addresses;
 	}
 
 	public void setAddresses(Set addresses) {
 		System.out.println("Set addresses:"+addresses);
 		this.addresses = addresses;
+	}*/
+
+	public ContactInfo getContactInfo() {
+		return contactInfo;
+	}
+
+	public void setContactInfo(ContactInfo contactInfo) {
+		this.contactInfo = contactInfo;
 	}
 
 }

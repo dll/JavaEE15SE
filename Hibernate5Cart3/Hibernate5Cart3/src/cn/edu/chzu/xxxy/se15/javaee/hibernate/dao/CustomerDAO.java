@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Customer;
@@ -11,7 +14,7 @@ import cn.edu.chzu.xxxy.se15.javaee.hibernate.po.Customer;
 public class CustomerDAO extends BaseHibernateDAO{
 	private static final Log log = LogFactory.getLog(CustomerDAO.class);
 	
-	public void save(Customer instance) {
+/*	public void save(Customer instance) {
 		log.debug("saving Customer instance");
 		try {
 			getSession().save(instance);
@@ -19,6 +22,22 @@ public class CustomerDAO extends BaseHibernateDAO{
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
 			throw re;
+		}
+	}*/
+	
+	public void save(Customer customer) {
+		log.debug("saving customer instance");
+		SessionFactory sf= new Configuration().configure().buildSessionFactory();
+		Session session=sf.openSession();
+		try {
+			session.save(customer);
+			session.flush();
+			log.debug("save successful");
+		} catch (RuntimeException re) {
+			log.error("save failed", re);
+			throw re;
+		} finally{
+			session.close();
 		}
 	}
 	
