@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	<!-- 实验八基础 -->
+	<!-- 将指定对象配置给spring，让spring创建其的实例 -->
+	<!--注册一个名称为userService的实例 -->
+	<!--将userDao实例注入到userService实例中 -->
+<!-- 	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" />
+	<bean id="userService" class="cn.edu.chzu.xxxy.se15.javaee.spring.service.UserService">
+		<property name="customerDAO" ref="userDAO" />
+	</bean> -->
+	<!-- 实验八提高 -->
+	<bean id="baseDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.BaseHibernateDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" parent="baseDAO"/>
+	
+	<bean id="userService" class="cn.edu.chzu.xxxy.se15.javaee.spring.service.UserService">
+		<property name="customerDAO" ref="userDAO" />
+	</bean>
+	<!-- 实验八扩展 -->
+	<bean id="userAction" class="cn.edu.chzu.xxxy.se15.javaee.spring.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/spring5cartdb"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value=""></property>
+	</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>cn/edu/chzu/xxxy/se15/javaee/spring/po/Customer.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+		
+	<!-- 实验九基础 -->
+	<bean id="item1" class="cn.edu.chzu.xxxy.se15.javaee.spring.bean.Item">
+		<constructor-arg index="0" type="java.lang.String">
+			<value>978-7-121-12345-1</value>
+		</constructor-arg>
+		<constructor-arg index="1" type="java.lang.String">
+			<value>JAVAEE技术实验指导教程</value>
+		</constructor-arg>
+		<constructor-arg index="2" type="java.lang.String">
+			<value>WEB程序设计知识回顾、轻量级JAVAEE应用框架、企业级EJB组件编程技术、JAVAEE综合应用开发</value>
+		</constructor-arg>
+		<constructor-arg index="3" type="double">
+			<value>19.95</value>
+		</constructor-arg>
+	</bean>	
+	<bean id="item2" class="cn.edu.chzu.xxxy.se15.javaee.spring.bean.Item">
+		<constructor-arg index="0" type="java.lang.String">
+			<value>978-7-121-12345-2</value>
+		</constructor-arg>
+		<constructor-arg index="1" type="java.lang.String">
+			<value>JAVAEE技术</value>
+		</constructor-arg>
+		<constructor-arg index="2" type="java.lang.String">
+			<value>Struts框架、Hibernate框架、Spring框架、会话Bean、实体Bean、消息驱动Bean</value>
+		</constructor-arg>
+		<constructor-arg index="3" type="double">
+			<value>29.95</value>
+		</constructor-arg>
+	</bean>
+	<bean id="itemorder1" class="cn.edu.chzu.xxxy.se15.javaee.spring.bean.ItemOrder">
+		<property name="numItems">   
+			<value>1</value>  
+		</property>
+        <property name="item">  
+        	<ref bean="item1"/>  
+        </property>
+	</bean>
+	<bean id="itemorder2" class="cn.edu.chzu.xxxy.se15.javaee.spring.bean.ItemOrder">
+		<property name="numItems">   
+			<value>2</value>  
+		</property>
+        <property name="item">  
+        	<ref bean="item2"/>  
+        </property>
+	</bean>	
+	<bean id="shoppingcart" class="cn.edu.chzu.xxxy.se15.javaee.spring.bean.ShoppingCart">
+		<property name="itemsOrdered">   
+			<list>
+				<ref bean="itemorder1"/>
+				<ref bean="itemorder2"/>
+			</list>  
+        </property>
+	</bean>
+	<!-- 实验十基础 -->
+	<!-- 启动使用注解配置AOP支持 -->
+	<aop:aspectj-autoproxy />
+	<bean id="securityHandler" class="cn.edu.chzu.xxxy.se15.javaee.spring.aspect.SecurityHandler" />	
+	<!-- 配置文件的方式 -->
+	<bean id="securityHandler2" class="cn.edu.chzu.xxxy.se15.javaee.spring.aspect.SecurityHandler2" />
+	<aop:config>
+		<aop:aspect id="security" ref="securityHandler2">
+			<aop:pointcut id="modify"
+				expression="execution(* *.add*(..))" />
+			<aop:before method="checkSecurity" pointcut-ref="modify" />
+		</aop:aspect>
+	</aop:config>
+<!-- 	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" />
+	<bean id="userService" class="cn.edu.chzu.xxxy.se15.javaee.spring.service.UserService">
+		<property name="customerDAO" ref="userDAO" />
+	</bean> -->
+</beans>
