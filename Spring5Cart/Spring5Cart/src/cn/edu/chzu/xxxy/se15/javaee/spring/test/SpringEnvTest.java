@@ -1,5 +1,8 @@
 package cn.edu.chzu.xxxy.se15.javaee.spring.test;
 
+import java.util.Date;
+import java.util.Locale;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,15 @@ import cn.edu.chzu.xxxy.se15.javaee.spring.service.IUserService;
 public class SpringEnvTest {
 		
 	@Test
+	public void testLocale() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:applicationContext9.xml");
+		Object[] objects=new Object[]{"HelloWorld", new Date()};
+		String message=ctx.getMessage("HelloWorld", objects, Locale.CHINA);
+		System.out.println(message);
+		String message1=ctx.getMessage("HelloWorld", objects, Locale.US);
+		System.out.println(message1);
+	}
+	@Test
 	public void testEvent() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:applicationContext9.xml");
 		EmailEvent ele = new EmailEvent("hello", "czldl@tom.com", "this is a test");
@@ -29,8 +41,8 @@ public class SpringEnvTest {
 				"applicationContext10.xml");
 		IUserService userService = (IUserService) ctx.getBean("logProxy");
 		Customer cust = new Customer();
-		cust.setAccount("javaee");
-		cust.setPassword("123456");
+		cust.setAccount("java");
+		cust.setPassword("123");
 		userService.addUser(cust);   
 	}
 

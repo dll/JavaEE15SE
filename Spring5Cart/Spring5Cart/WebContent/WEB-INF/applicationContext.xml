@@ -10,23 +10,18 @@
 	<!-- 将指定对象配置给spring，让spring创建其的实例 -->
 	<!--注册一个名称为userService的实例 -->
 	<!--将userDao实例注入到userService实例中 -->
-<!-- 	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" />
+	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" />
 	<bean id="userService" class="cn.edu.chzu.xxxy.se15.javaee.spring.service.UserService">
 		<property name="customerDAO" ref="userDAO" />
-	</bean> -->
+	</bean>
 	<!-- 实验八提高 -->
 	<bean id="baseDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.BaseHibernateDAO">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="userDAO" class="cn.edu.chzu.xxxy.se15.javaee.spring.dao.CustomerDAO" parent="baseDAO"/>
-	<bean id="userService" class="cn.edu.chzu.xxxy.se15.javaee.spring.service.UserService">
-		<property name="customerDAO" ref="userDAO" />
 	</bean>
 	<!-- 实验八扩展 -->
 	<bean id="userAction" class="cn.edu.chzu.xxxy.se15.javaee.spring.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService" />
 	</bean>
-	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/spring5cartdb"></property>
@@ -37,7 +32,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
 		</property>
 		<property name="mappingResources">

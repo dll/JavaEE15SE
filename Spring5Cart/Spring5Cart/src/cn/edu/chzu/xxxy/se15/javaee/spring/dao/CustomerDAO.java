@@ -6,6 +6,9 @@ public class CustomerDAO extends BaseHibernateDAO implements ICustomerDAO{
 	public CustomerDAO(){
 		System.out.println("create CustomerDao.");
 	}
+	public void save8() {
+		System.out.println("execute --save8()-- method.");
+	}
 	public void save(Customer transientInstance) {
 		System.out.println("execute --save()-- method.");
 		try {

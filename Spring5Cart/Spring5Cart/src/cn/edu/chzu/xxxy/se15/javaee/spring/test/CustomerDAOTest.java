@@ -22,6 +22,13 @@ public class CustomerDAOTest {
 	Customer cust;
 	
 	@Test
+	public void testSave8() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		userDao = (ICustomerDAO) ctx.getBean("userDAO");
+		userDao.save8();  
+	}
+	
+	@Test
 	public void testSave() {
 		//fail("Not yet implemented");
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -41,8 +48,8 @@ public class CustomerDAOTest {
 		//通过容器获取userService实例
 		userService = (IUserService) ctx.getBean("userService");
 		cust = new Customer();
-		cust.setAccount("SPRING");
-		cust.setPassword("SPRING");
+		cust.setAccount("SPRING1");
+		cust.setPassword("SPRING1");
 		//调用userService的addUser()方法
 		userService.addUser(cust);  
 	}
@@ -55,8 +62,8 @@ public class CustomerDAOTest {
 		//通过容器获取userService实例
 		userService = (IUserService) ctx.getBean("userService");
 		cust = new Customer();
-		cust.setAccount("SPRING");
-		cust.setPassword("SPRING");
+		cust.setAccount("SPRING5");
+		cust.setPassword("SPRING5");
 		//调用userService的addUser()方法
 		userService.addUser(cust);  
 	}

@@ -24,7 +24,6 @@ public class UserServiceTest {
 	
 	@Test
 	public void testSave() {
-		//fail("Not yet implemented");
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 		System.out.println("before ctx.getBean.");
 		IUserService userService = (IUserService) ctx.getBean("userService");

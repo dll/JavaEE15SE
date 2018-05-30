@@ -24,8 +24,13 @@ public class UserAction {
 	}
 	
 	public String execute() {
-		userService.register(loginUser);
-		return "success";
+		
+		if(userService!=null){
+			userService.register(loginUser);
+			return "success";
+		}
+		else
+			return "fail";
 	}
 
 }

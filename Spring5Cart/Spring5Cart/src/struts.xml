@@ -4,7 +4,11 @@
 "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 	<package name="Spring5Cart" extends="struts-default" namespace="/"> 
- 		<action name="register" class="cn.edu.chzu.xxxy.se15.javaee.spring.action.UserAction">
+		<!--<action name="register" class="cn.edu.chzu.xxxy.se15.javaee.spring.action.UserAction">
+			<result name="success">/regSuccess.jsp</result>
+			<result name="fail">/regFail.jsp</result>
+		</action> -->
+		<action name="register" class="userAction">
 			<result name="success">/regSuccess.jsp</result>
 			<result name="fail">/regFail.jsp</result>
 		</action>
